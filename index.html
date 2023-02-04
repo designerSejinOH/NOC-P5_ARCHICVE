@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>NOC-P5</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .header {
+      width: 100%;
+      height: 100vh;
+      background: #000;
+      color: #fff;
+
+    }
+
+    .header-logo {
+      padding: 10px;
+      width: 100%;
+      background: #000;
+      color: #fff;
+      font-size: 10vmax;
+      line-height: 10vmax;
+      /* text-align: center; */
+      cursor: pointer;
+    }
+
+    .contents {
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      margin-bottom: 10vh;
+      width: fit-content;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .contents div {
+      border: 2px solid #fff;
+      border-radius: 60px;
+      padding: 10px 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .contents div:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .contents div:active {
+      background: #000;
+      color: #fff;
+    }
+
+
+    @media screen and (max-width: 600px) {
+      .header-logo {
+        font-size: 5vmax;
+        line-height: 7vmax;
+      }
+
+      .contents {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer {
+      width: 100%;
+      height: 100vh;
+      background: #fff;
+      color: #000;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  </style>
+</head>
+<div class="header">
+  <div class="header-logo" onclick="window.location.href='./index.html'">
+    Project : ARCHIVE NATURE OF CODE by p5.js
+  </div>
+  <div class="contents">
+    <div class="yewon" onclick="window.location.href='./yewon/index.html'">
+      Yewon's Archive
+    </div>
+    <div class="sejin" onclick="window.location.href='./sejin/index.html'">
+      Sejin's Archive
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="copyright">
+    <p>Made with <a href="https://www.instagram.com/p5xjs/" target="_blank">@p5xjs</a></p>
+    <p>© 2023 Yewon & Sejin</p>
+  </div>
+</div>
+</div>
+
+
+<body>
+</body>
+
+</html>
