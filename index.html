@@ -5,6 +5,7 @@
   <title>NOC-P5</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="js/p5/p5.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <style>
     .header {
@@ -16,17 +17,27 @@
     }
 
     .header-logo {
+      position: absolute;
       padding: 10px;
       width: 100%;
-      background: #000;
       color: #fff;
       font-size: 10vmax;
       line-height: 10vmax;
       /* text-align: center; */
       cursor: pointer;
+      z-index: 10;
     }
 
-    .contents {
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .getArchiveRoom {
       position: absolute;
       width: 100%;
       left: 50%;
@@ -39,9 +50,10 @@
       justify-content: center;
       align-items: center;
       gap: 20px;
+      z-index: 10;
     }
 
-    .contents div {
+    .getArchiveRoom div {
       border: 2px solid #fff;
       border-radius: 60px;
       padding: 10px 20px;
@@ -49,29 +61,17 @@
       cursor: pointer;
     }
 
-    .contents div:hover {
+    .getArchiveRoom div:hover {
       background: #fff;
       color: #000;
     }
 
-    .contents div:active {
-      background: #000;
-      color: #fff;
+    .getArchiveRoom div:active {
+      background: #fff;
+      color: #000;
     }
 
-
-    @media screen and (max-width: 600px) {
-      .header-logo {
-        font-size: 5vmax;
-        line-height: 7vmax;
-      }
-
-      .contents {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .footer {
+    .contents {
       width: 100%;
       height: 100vh;
       background: #fff;
@@ -81,31 +81,60 @@
       align-items: center;
       text-align: center;
     }
+
+    .footer {
+      width: 100%;
+      height: 100vh;
+      background: #000;
+      color: #fff;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media screen and (max-width: 600px) {
+      .header-logo {
+        font-size: 5vmax;
+        line-height: 7vmax;
+      }
+
+      .getArchiveRoom {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
-<div class="header">
-  <div class="header-logo" onclick="window.location.href='./index.html'">
-    Project : ARCHIVE NATURE OF CODE by p5.js
-  </div>
-  <div class="contents">
-    <div class="yewon" onclick="window.location.href='./yewon/index.html'">
-      Yewon's Archive
-    </div>
-    <div class="sejin" onclick="window.location.href='./sejin/index.html'">
-      Sejin's Archive
-    </div>
-  </div>
-</div>
-<div class="footer">
-  <div class="copyright">
-    <p>Made with <a href="https://www.instagram.com/p5xjs/" target="_blank">@p5xjs</a></p>
-    <p>© 2023 Yewon & Sejin</p>
-  </div>
-</div>
-</div>
-
 
 <body>
+  <div class="header">
+    <div class="header-logo" onclick="window.location.href='./index.html'">
+      Project : ARCHIVE NATURE OF CODE by p5.js
+    </div>
+    <canvas width="100%" height="100%">
+    </canvas>
+    <div class="getArchiveRoom">
+      <div class="yewon" onclick="window.location.href='./yewon/index.html'">
+        Yewon's Archive
+      </div>
+      <div class="sejin" onclick="window.location.href='./sejin/index.html'">
+        Sejin's Archive
+      </div>
+    </div>
+  </div>
+  <div class="contents">
+    <div class="contents-title">
+      <h1>Contents</h1>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="copyright">
+      <p>Made with <a href="https://www.instagram.com/p5xjs/" target="_blank">@p5xjs</a></p>
+      <p>© 2023 Yewon & Sejin</p>
+    </div>
+  </div>
+  </div>
+  <script src="sketch.js"></script>
 </body>
 
 </html>
