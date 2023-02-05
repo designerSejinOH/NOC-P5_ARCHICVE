@@ -15,6 +15,14 @@
      color: white;
    }
 
+   a:hover {
+     color: #ff6b6b;
+   }
+
+   a:active {
+     color: #ff6b6b;
+   }
+
    html,
    body {
      margin: 0;
