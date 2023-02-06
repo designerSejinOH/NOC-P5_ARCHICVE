@@ -73,16 +73,55 @@
 
     .contents {
       width: 100%;
-      height: 100vh;
       background: #fff;
       color: #000;
-      display: grid;
-      justify-content: center;
-      align-items: center;
+    }
+
+    .contents h1 {
+      margin-top: 50px;
+      padding: 20px;
       text-align: center;
     }
 
 
+    .contents-grid {
+      position: relative;
+      width: 100%;
+      height: fit-content;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: center;
+      gap: 20px;
+      align-items: stretch;
+      justify-items: center;
+    }
+
+    .chapter {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .chapter-title {
+      background: #000;
+      color: #fff;
+      width: 100%;
+      text-align: left;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+    }
+
+    .chapter-content {
+      color: #000;
+      width: 100%;
+      text-align: left;
+      padding: 5px;
+      border-bottom: 1px solid #000;
+      line-height: 1.5em;
+    }
 
     .footer {
       width: 100%;
@@ -100,29 +139,19 @@
       width: fit-content;
     }
 
-    button {
-      top: 80%;
-      position: absolute;
-      justify-self: center;
-      border: none;
-      background: none;
-      color: #fff;
-      border-radius: 30px;
-      width: fit-content;
-      padding: 10px 20px;
-      border: 1px solid #fff;
-      cursor: pointer;
+    @media screen and (max-width: 1100px) {
+      .contents-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
     }
 
-    button:hover {
-      background: #fff;
-      color: #000;
+    @media screen and (max-width: 748px) {
+      .contents-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
-    button:active {
-      background: #fff;
-      color: #000;
-    }
 
     @media screen and (max-width: 600px) {
       .header-logo {
@@ -131,6 +160,13 @@
       }
 
       .getArchiveRoom {
+        grid-template-columns: 1fr;
+      }
+
+      .contents-grid {
+        width: 100%;
+        height: fit-content;
+
         grid-template-columns: 1fr;
       }
     }
@@ -152,22 +188,132 @@
         Sejin's Archive
       </div>
     </div>
+    <button onclick="window.scrollTo({
+      top: document.querySelector('.contents').offsetTop,
+      behavior: 'smooth'
+    })" onmouseover="
+    this.style.color='#000' ; this.style.backgroundColor='#fff' ; this.style.fontSize='x-large';
+    " onmouseout="
+    this.style.color='#fff' ; this.style.backgroundColor='transparent' ; this.style.fontSize='larger';
+    " style="
+    position: absolute;
+    top:60%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    background: none;
+    font-size: larger;
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 20px;
+    width: fit-content;
+    cursor: pointer;
+    z-index: 20;
+    ">
+      "Nature Of Code"
+    </button>
   </div>
   <div class="contents">
-    <div class="contents-title">
-      <h1>Contents</h1>
+    <h1>Contents</h1>
+    <div class="contents-grid">
+      <div class="chapter">
+        <div class="chapter-title">CHAPTER 0 소개</div>
+        <div class="chapter-content">0.1 Random Walks</div>
+        <div class="chapter-content">0.2 Walker 클래스</div>
+        <div class="chapter-content">0.3 확률과 비균등 분포</div>
+        <div class="chapter-content">0.4 임의 숫자의 정규 분포</div>
+        <div class="chapter-content">0.5 임의 숫자의 사용자 정의 분포</div>
+        <div class="chapter-content">0.6 펄린 노이즈, 노이즈 맵핑, 2차원 노이즈</div>
+        <div class="chapter-content">0.7 이어지는 내용</div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-title">CHAPTER 1 벡터</div>
+        <div class="chapter-content">1.1 벡터 기본</div>
+        <div class="chapter-content">1.2 프로세싱 프로그래밍과 벡터</div>
+        <div class="chapter-content">1.3 벡터 덧샘</div>
+        <div class="chapter-content">1.4 벡터와 관련된 수학, 벡터 뺄샘, 벡터 곱샘</div>
+        <div class="chapter-content">1.5 벡터 크기</div>
+        <div class="chapter-content">1.6 벡터 정규화</div>
+        <div class="chapter-content">1.7 속도와 벡터를 활용한 이동</div>
+        <div class="chapter-content">1.8 가속도와 벡터를 사용한 이동, 가속도 활용 예제</div>
+        <div class="chapter-content">1.9 static 함수</div>
+        <div class="chapter-content">1.10 가속도와 상호작용</div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-title">CHAPTER 2 힘</div>
+        <div class="chapter-content">2.1 힘과 뉴턴의 운동 법칙, 뉴턴의 운동 1법칙, 뉴턴의 운동 3법칙, 프로세싱과 뉴턴의 운동 3법칙</div>
+        <div class="chapter-content">2.2 힘과 프로세싱: 뉴턴의 운동 2법칙</div>
+        <div class="chapter-content">2.3 힘 축적</div>
+        <div class="chapter-content">2.4 질량</div>
+        <div class="chapter-content">2.5 힘 생성</div>
+        <div class="chapter-content">2.6 중력 모방</div>
+        <div class="chapter-content">2.7 마찰력</div>
+        <div class="chapter-content">2.8 공기 저항과 유체 저항</div>
+        <div class="chapter-content">2.9 중력 끌림</div>
+        <div class="chapter-content">2.10 모든 객체의 만유인력</div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-title">CHAPTER 3 진동</div>
+        <div class="chapter-content">3.1 각도</div>
+        <div class="chapter-content">3.2 회전 운동</div>
+        <div class="chapter-content">3.3 삼각법</div>
+        <div class="chapter-content">3.4 이동 방향의 목적지</div>
+        <div class="chapter-content">3.5 극 좌표계와 직표 좌표계</div>
+        <div class="chapter-content">3.6 진동의 진폭과 주기</div>
+        <div class="chapter-content">3.7 각속도와 진동</div>
+        <div class="chapter-content">3.8 파동</div>
+        <div class="chapter-content">3.9 삼각법과 힘: 진자</div>
+        <div class="chapter-content">3.10 용수철 힘</div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-title">CHAPTER 4 파티클 시스템</div>
+        <div class="chapter-content">4.1 파티클 시스템을 사용하는 이유</div>
+        <div class="chapter-content">4.2 입자 하나</div>
+        <div class="chapter-content">4.3 ArrayList 클래스</div>
+        <div class="chapter-content">4.4 ParticleSystem 클래스</div>
+        <div class="chapter-content">4.5 여러 개의 파티클 시스템</div>
+        <div class="chapter-content">4.6 상속과 다형성 소개</div>
+        <div class="chapter-content">4.7 상속 기본</div>
+        <div class="chapter-content">4.8 상속을 활용한 입자</div>
+        <div class="chapter-content">4.9 다형성 기본</div>
+        <div class="chapter-content">4.10 다형성을 사용한 파티클 시스템</div>
+        <div class="chapter-content">4.11 힘을 활용하는 파티클 시스템</div>
+        <div class="chapter-content">4.12 서로 밀어내는 파티클 시스템</div>
+        <div class="chapter-content">4.13 이미지 텍스처와 가산 합성</div>
+      </div>
     </div>
   </div>
   <div class="footer">
     <div class="copyright">
       <p>Made with <a href="https://www.instagram.com/p5xjs/" target="_blank">@p5xjs</a>.</p>
-      <p>© 2023 Yewon & Sejin</p>
+      <p> This learning lesson is from</p>
+      <p> the book of <a href="https://natureofcode.com/">"Nature Of Code"</a> </p>
+      <p> by Daniel Shiffman.</p>
+      <br>
+      <p>© 2023 <a href="https://www.instagram.com/yewon.calli/">Yewon</a> & <a
+          href="https://www.instagram.com/ohsj1999/">Sejin</a>.</p>
     </div>
     <button onclick="window.scrollTo({
       top: 0,
       behavior: 'smooth'
-    })">
-      ⬆️ Go to Top
+    })" onmouseover="
+    this.style.color='#000' ; this.style.backgroundColor='#fff' ; this.style.fontSize='x-large' ;
+    " onmouseout="
+    this.style.color='#fff' ; this.style.backgroundColor='transparent' ; this.style.fontSize='medium' ;
+    " style="
+    top: 80%;
+    position: absolute;
+    justify-self: center;
+    border: none;
+    background: none;
+    color: #fff;
+    border-radius: 30px;
+    width: fit-content;
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    cursor: pointer;    
+    ">
+      Page Up!
     </button>
   </div>
   </div>
