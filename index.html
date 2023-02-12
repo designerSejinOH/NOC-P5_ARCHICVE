@@ -200,11 +200,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 70%;
-      height: 70%;
+      width: 80%;
+      height: fit-content;
       padding: 20px;
       border-radius: 15px;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(50px);
       z-index: 100;
     }
@@ -242,7 +242,7 @@
 
     .contentModalBody iframe {
       width: 100%;
-      height: 400px;
+      height: 40vh;
     }
 
     .contentModalBody span {
@@ -277,15 +277,15 @@
       top: document.querySelector('.contents').offsetTop,
       behavior: 'smooth'
     })" onmouseover="
-    this.style.color='#000' ; this.style.backgroundColor='#fff' ; this.style.fontSize='x-large';
+    this.style.color='#000' ; this.style.backgroundColor='#fff' ; this.style.fontSize='large';
     " onmouseout="
-    this.style.color='#fff' ; this.style.backgroundColor='transparent' ; this.style.fontSize='larger';
+    this.style.color='#fff' ; this.style.backgroundColor='transparent' ; this.style.fontSize='medium';
     " style="
     position: absolute;
     top:60%;
     left: 50%;
     transform: translateX(-50%);
-    border: 2px solid #fff;
+    border: none;
     background: none;
     font-size: larger;
     color: #fff;
@@ -295,7 +295,7 @@
     cursor: pointer;
     z-index: 20;
     ">
-      GO DOWN TO CONTENTS
+      > GO DOWN TO CONTENTS
     </button>
   </div>
   </div>
@@ -410,6 +410,9 @@
       connectedCallback() {
         let num = this.getAttribute('num');
         let lesson = this.getAttribute('lesson');
+        let yewonText = this.getAttribute('yewonText');
+        let sejinText = this.getAttribute('sejinText');
+
         this.innerHTML = `
       <div class="chapter-content" href="#">${lesson}</div>
       `
@@ -419,7 +422,7 @@
           let modal = document.createElement('div');
           modal.classList.add('contentModalContainer');
           modal.innerHTML = `
-      <div class="contentModalContainer">
+      <div class="contentModalContainer" style="height:100vh; overflow-y:hidden;">
         <div class="contentModalBox">
           <div class="contentModalHeader">
             <div class="contentModalTitle">
@@ -437,13 +440,13 @@
           <div class="contentModalBody">
             <div>
               <iframe src="./yewon/${num}.html"></iframe>
-<span style="color: #fff;">No.${num} by Yewon</span>
-<p style="color: #fff;">This is ${lesson}.</p>
+<span style="color: #000;">No.${num} by Yewon</span>
+<p style="color: #000;">This is ${lesson}.</p>
               </div>
             <div>
               <iframe src="./sejin/${num}.html"></iframe>
-              <span style="color: #fff;">No.${num} by Sejin</span>
-<p style="color: #fff;">This is ${lesson}.</p>
+              <span style="color: #000;">No.${num} by Sejin</span>
+<p style="color: #000;">This is ${lesson}.</p>
               </div>
           </div>
         </div>
