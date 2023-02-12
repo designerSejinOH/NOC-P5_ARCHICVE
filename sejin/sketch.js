@@ -4,7 +4,7 @@ function setup() {
 
 function draw() {
   orbitControl();
-  background(0);
+  background(255);
   rotateX(frameCount * 0.01);
   rotateY(frameCount * 0.01);
   box(100);

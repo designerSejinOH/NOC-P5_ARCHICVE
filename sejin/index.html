@@ -1,20 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOC-SEJIN</title>
-  <script src="../js/p5/p5.js"></script>
-  <script src="../js/p5/p5.min.js"></script>
-  <link rel="stylesheet" href="../css/style.css" />
-  <meta charset="utf-8" />
+  <title>NOC-P5</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="js/p5/p5.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contentModalContainer {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      overflow: hidden;
+    }
+
+    .contentModalBox {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: fit-content;
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(50px);
+      z-index: 100;
+    }
+
+    .contentModalHeader {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      width: 80%;
+      height: fit-content
+    }
+
+    .contentModalHeader h1 {
+      width: 100%;
+      font-size: 2em;
+      margin: 0;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+
+    .contentModalBody {
+      margin-top: 20px;
+      display: grid;
+
+    }
+
+    .contentModalBody div {
+      display: grid;
+    }
+
+    .contentModalBody iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .contentModalBody span {
+      width: 100%;
+      height: 100%;
+      margin-top: 10px;
+      font-size: larger;
+      line-height: 1.5em;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+    }
+  </style>
 </head>
 
 <body>
-  <main>
-  </main>
+  <chapter-content num="001" lesson="0.1 Random Walks"></chapter-content>
   <script src="sketch.js"></script>
+  <script>
+    class chapterContent extends HTMLElement {
+      connectedCallback() {
+        let num = this.getAttribute('num');
+        let lesson = this.getAttribute('lesson');
+        let yewonText = this.getAttribute('yewonText');
+        let sejinText = this.getAttribute('sejinText');
+
+        this.innerHTML = `
+      <div class="chapter-content" href="#">${lesson}</div>
+      `
+
+        this.addEventListener('click', () => {
+          //create modal
+          let modal = document.createElement('div');
+          modal.classList.add('contentModalContainer');
+          modal.innerHTML = `
+      <div class="contentModalContainer" style="height:100vh; overflow-y:hidden;">
+        <div class="contentModalBox">
+          <div class="contentModalHeader">
+            <div class="contentModalTitle">
+              <h1>${lesson}</h1>
+              </div>
+            <a class="close" onclick="
+            document.querySelector('.contentModalContainer').remove();
+            ">
+              <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2L9.63158 9.5M9.63158 9.5L17 16.7414M9.63158 9.5L17 2.25862M9.63158 9.5L2 17" stroke="black"
+                  stroke-opacity="0.3" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="contentModalBody">
+            <div>
+              <iframe src="./${num}.html"></iframe>
+<span style="color: #000;">No.${num} by sejin</span>
+<p style="color: #000;">This is ${lesson}.</p>
+              </div>
+          </div>
+        </div>
+      </div>
+      `
+          document.body.appendChild(modal);
+        })
+      }
+    }
+    customElements.define('chapter-content', chapterContent);
+  </script>
 </body>
 
 </html>
