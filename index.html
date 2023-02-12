@@ -121,6 +121,12 @@
       padding: 5px;
       border-bottom: 1px solid #000;
       line-height: 1.5em;
+      cursor: pointer;
+    }
+
+    .chapter-content:hover {
+      background: #000;
+      color: #fff;
     }
 
     .footer {
@@ -144,12 +150,14 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+
     }
 
     @media screen and (max-width: 748px) {
       .contents-grid {
         grid-template-columns: 1fr;
       }
+
     }
 
 
@@ -166,9 +174,86 @@
       .contents-grid {
         width: 100%;
         height: fit-content;
-
         grid-template-columns: 1fr;
       }
+
+      .contentModalBody {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    .contentModalContainer {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      overflow: hidden;
+    }
+
+    .contentModalBox {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70%;
+      height: 70%;
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(50px);
+      z-index: 100;
+    }
+
+    .contentModalHeader {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      width: 80%;
+      height: fit-content
+    }
+
+    .contentModalHeader h1 {
+      width: 100%;
+      font-size: 2em;
+      margin: 0;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+
+    .contentModalBody {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contentModalBody div {
+      display: grid;
+    }
+
+    .contentModalBody iframe {
+      width: 100%;
+      height: 400px;
+    }
+
+    .contentModalBody span {
+      width: 100%;
+      height: 100%;
+      margin-top: 10px;
+      font-size: larger;
+      line-height: 1.5em;
+      display: flex;
+      justify-content: left;
+      align-items: center;
     }
   </style>
 </head>
@@ -200,7 +285,7 @@
     top:60%;
     left: 50%;
     transform: translateX(-50%);
-    border: none;
+    border: 2px solid #fff;
     background: none;
     font-size: larger;
     color: #fff;
@@ -210,76 +295,78 @@
     cursor: pointer;
     z-index: 20;
     ">
-      "Nature Of Code"
+      GO DOWN TO CONTENTS
     </button>
+  </div>
   </div>
   <div class="contents">
     <h1>Contents</h1>
     <div class="contents-grid">
       <div class="chapter">
         <div class="chapter-title">CHAPTER 0 소개</div>
-        <div class="chapter-content">0.1 Random Walks</div>
-        <div class="chapter-content">0.2 Walker 클래스</div>
-        <div class="chapter-content">0.3 확률과 비균등 분포</div>
-        <div class="chapter-content">0.4 임의 숫자의 정규 분포</div>
-        <div class="chapter-content">0.5 임의 숫자의 사용자 정의 분포</div>
-        <div class="chapter-content">0.6 펄린 노이즈, 노이즈 맵핑, 2차원 노이즈</div>
-        <div class="chapter-content">0.7 이어지는 내용</div>
+        <chapter-content num="001" lesson="0.1 Random Walks"></chapter-content>
+        <chapter-content num="002" lesson="0.2 Walker 클래스"></chapter-content>
+        <chapter-content num="003" lesson="0.3 확률과 비균등 분포"></chapter-content>
+        <chapter-content num="004" lesson="0.4 임의 숫자의 정규 분포"></chapter-content>
+        <chapter-content num="005" lesson="0.5 임의 숫자의 사용자 정의 분포"></chapter-content>
+        <chapter-content num="006" lesson="0.6 펄린 노이즈, 노이즈 맵핑, 2차원 노이즈"></chapter-content>
+        <chapter-content num="007" lesson="0.7 이어지는 내용"></chapter-content>
       </div>
       <div class="chapter">
         <div class="chapter-title">CHAPTER 1 벡터</div>
-        <div class="chapter-content">1.1 벡터 기본</div>
-        <div class="chapter-content">1.2 프로세싱 프로그래밍과 벡터</div>
-        <div class="chapter-content">1.3 벡터 덧샘</div>
-        <div class="chapter-content">1.4 벡터와 관련된 수학, 벡터 뺄샘, 벡터 곱샘</div>
-        <div class="chapter-content">1.5 벡터 크기</div>
-        <div class="chapter-content">1.6 벡터 정규화</div>
-        <div class="chapter-content">1.7 속도와 벡터를 활용한 이동</div>
-        <div class="chapter-content">1.8 가속도와 벡터를 사용한 이동, 가속도 활용 예제</div>
-        <div class="chapter-content">1.9 static 함수</div>
-        <div class="chapter-content">1.10 가속도와 상호작용</div>
+        <chapter-content num="101" lesson="1.1 벡터 기본"></chapter-content>
+        <chapter-content num="102" lesson="1.2 프로세싱 프로그래밍과 벡터"></chapter-content>
+        <chapter-content num="103" lesson="1.3 벡터 덧샘"></chapter-content>
+        <chapter-content num="104" lesson="1.4 벡터와 관련된 수학, 벡터 뺄샘, 벡터 곱샘"></chapter-content>
+        <chapter-content num="105" lesson="1.5 벡터 크기"></chapter-content>
+        <chapter-content num="106" lesson="1.6 벡터 정규화"></chapter-content>
+        <chapter-content num="107" lesson="1.7 속도와 벡터를 활용한 이동"></chapter-content>
+        <chapter-content num="108" lesson="1.8 가속도와 벡터를 사용한 이동, 가속도 활용 예제"></chapter-content>
+        <chapter-content num="109" lesson="1.9 static 함수"></chapter-content>
+        <chapter-content num="110" lesson="1.10 가속도와 상호작용"></chapter-content>
       </div>
       <div class="chapter">
         <div class="chapter-title">CHAPTER 2 힘</div>
-        <div class="chapter-content">2.1 힘과 뉴턴의 운동 법칙, 뉴턴의 운동 1법칙, 뉴턴의 운동 3법칙, 프로세싱과 뉴턴의 운동 3법칙</div>
-        <div class="chapter-content">2.2 힘과 프로세싱: 뉴턴의 운동 2법칙</div>
-        <div class="chapter-content">2.3 힘 축적</div>
-        <div class="chapter-content">2.4 질량</div>
-        <div class="chapter-content">2.5 힘 생성</div>
-        <div class="chapter-content">2.6 중력 모방</div>
-        <div class="chapter-content">2.7 마찰력</div>
-        <div class="chapter-content">2.8 공기 저항과 유체 저항</div>
-        <div class="chapter-content">2.9 중력 끌림</div>
-        <div class="chapter-content">2.10 모든 객체의 만유인력</div>
+        <chapter-content num="201" lesson="2.1 힘과 뉴턴의 운동 법칙, 뉴턴의 운동 1법칙, 뉴턴의 운동 3법칙, 프로세싱과 뉴턴의 운동 3법칙">
+        </chapter-content>
+        <chapter-content num="202" lesson="2.2 힘과 프로세싱: 뉴턴의 운동 2법칙"></chapter-content>
+        <chapter-content num="203" lesson="2.3 힘 축적"></chapter-content>
+        <chapter-content num="204" lesson="2.4 질량"></chapter-content>
+        <chapter-content num="205" lesson="2.5 힘 생성"></chapter-content>
+        <chapter-content num="206" lesson="2.6 중력 모방"></chapter-content>
+        <chapter-content num="207" lesson="2.7 마찰력"></chapter-content>
+        <chapter-content num="208" lesson="2.8 공기 저항과 유체 저항"></chapter-content>
+        <chapter-content num="209" lesson="2.9 중력 끌림"></chapter-content>
+        <chapter-content num="210" lesson="2.10 모든 객체의 만유인력"></chapter-content>
       </div>
       <div class="chapter">
         <div class="chapter-title">CHAPTER 3 진동</div>
-        <div class="chapter-content">3.1 각도</div>
-        <div class="chapter-content">3.2 회전 운동</div>
-        <div class="chapter-content">3.3 삼각법</div>
-        <div class="chapter-content">3.4 이동 방향의 목적지</div>
-        <div class="chapter-content">3.5 극 좌표계와 직표 좌표계</div>
-        <div class="chapter-content">3.6 진동의 진폭과 주기</div>
-        <div class="chapter-content">3.7 각속도와 진동</div>
-        <div class="chapter-content">3.8 파동</div>
-        <div class="chapter-content">3.9 삼각법과 힘: 진자</div>
-        <div class="chapter-content">3.10 용수철 힘</div>
+        <chapter-content num="301" lesson="3.1 각도"></chapter-content>
+        <chapter-content num="302" lesson="3.2 회전 운동"></chapter-content>
+        <chapter-content num="303" lesson="3.3 삼각법"></chapter-content>
+        <chapter-content num="304" lesson="3.4 이동 방향의 목적지"></chapter-content>
+        <chapter-content num="305" lesson="3.5 극 좌표계와 직표 좌표계"></chapter-content>
+        <chapter-content num="306" lesson="3.6 진동의 진폭과 주기"></chapter-content>
+        <chapter-content num="307" lesson="3.7 각속도와 진동"></chapter-content>
+        <chapter-content num="308" lesson="3.8 파동"></chapter-content>
+        <chapter-content num="309" lesson="3.9 삼각법과 힘: 진자"></chapter-content>
+        <chapter-content num="310" lesson="3.10 용수철 힘"></chapter-content>
       </div>
       <div class="chapter">
         <div class="chapter-title">CHAPTER 4 파티클 시스템</div>
-        <div class="chapter-content">4.1 파티클 시스템을 사용하는 이유</div>
-        <div class="chapter-content">4.2 입자 하나</div>
-        <div class="chapter-content">4.3 ArrayList 클래스</div>
-        <div class="chapter-content">4.4 ParticleSystem 클래스</div>
-        <div class="chapter-content">4.5 여러 개의 파티클 시스템</div>
-        <div class="chapter-content">4.6 상속과 다형성 소개</div>
-        <div class="chapter-content">4.7 상속 기본</div>
-        <div class="chapter-content">4.8 상속을 활용한 입자</div>
-        <div class="chapter-content">4.9 다형성 기본</div>
-        <div class="chapter-content">4.10 다형성을 사용한 파티클 시스템</div>
-        <div class="chapter-content">4.11 힘을 활용하는 파티클 시스템</div>
-        <div class="chapter-content">4.12 서로 밀어내는 파티클 시스템</div>
-        <div class="chapter-content">4.13 이미지 텍스처와 가산 합성</div>
+        <chapter-content num="401" lesson="4.1 파티클 시스템을 사용하는 이유"></chapter-content>
+        <chapter-content num="402" lesson="4.2 입자 하나"></chapter-content>
+        <chapter-content num="403" lesson="4.3 ArrayList 클래스"></chapter-content>
+        <chapter-content num="404" lesson="4.4 ParticleSystem 클래스"></chapter-content>
+        <chapter-content num="405" lesson="4.5 여러 개의 파티클 시스템"></chapter-content>
+        <chapter-content num="406" lesson="4.6 상속과 다형성 소개"></chapter-content>
+        <chapter-content num="407" lesson="4.7 상속 기본"></chapter-content>
+        <chapter-content num="408" lesson="4.8 상속을 활용한 입자"></chapter-content>
+        <chapter-content num="409" lesson="4.9 다형성 기본"></chapter-content>
+        <chapter-content num="410" lesson="4.10 다형성을 사용한 파티클 시스템"></chapter-content>
+        <chapter-content num="411" lesson="4.11 힘을 활용하는 파티클 시스템"></chapter-content>
+        <chapter-content num="412" lesson="4.12 서로 밀어내는 파티클 시스템"></chapter-content>
+        <chapter-content num="413" lesson="4.13 이미지와 텍스처와 가산 합성"></chapter-content>
       </div>
     </div>
   </div>
@@ -318,6 +405,56 @@
   </div>
   </div>
   <script src="sketch.js"></script>
+  <script>
+    class chapterContent extends HTMLElement {
+      connectedCallback() {
+        let num = this.getAttribute('num');
+        let lesson = this.getAttribute('lesson');
+        this.innerHTML = `
+      <div class="chapter-content" href="#">${lesson}</div>
+      `
+
+        this.addEventListener('click', () => {
+          //create modal
+          let modal = document.createElement('div');
+          modal.classList.add('contentModalContainer');
+          modal.innerHTML = `
+      <div class="contentModalContainer">
+        <div class="contentModalBox">
+          <div class="contentModalHeader">
+            <div class="contentModalTitle">
+              <h1>${lesson}</h1>
+              </div>
+            <a class="close" onclick="
+            document.querySelector('.contentModalContainer').remove();
+            ">
+              <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2L9.63158 9.5M9.63158 9.5L17 16.7414M9.63158 9.5L17 2.25862M9.63158 9.5L2 17" stroke="black"
+                  stroke-opacity="0.3" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="contentModalBody">
+            <div>
+              <iframe src="./yewon/${num}.html"></iframe>
+<span style="color: #fff;">Yewon</span>
+<p style="color: #fff;">This is chapter0.</p>
+              </div>
+            <div>
+              <iframe src="./sejin/${num}.html"></iframe>
+              <span style="color: #fff;">Sejin</span>
+              <p style="color: #fff;">This is chapter0.</p>
+              </div>
+          </div>
+        </div>
+      </div>
+      `
+          document.body.appendChild(modal);
+        })
+      }
+    }
+    customElements.define('chapter-content', chapterContent);
+  </script>
 </body>
 
 </html>
