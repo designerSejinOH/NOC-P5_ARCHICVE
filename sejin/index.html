@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>NOC-P5</title>
+  <title>NOC-P5-SEJIN</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="js/p5/p5.js"></script>
@@ -92,11 +92,10 @@
       connectedCallback() {
         let num = this.getAttribute('num');
         let lesson = this.getAttribute('lesson');
-        let yewonText = this.getAttribute('yewonText');
         let sejinText = this.getAttribute('sejinText');
 
         this.innerHTML = `
-      <div class="chapter-content" href="#">${lesson}</div>
+      <div class="chapter-content" href="#" style="cursor:pointer;">${lesson}</div>
       `
 
         this.addEventListener('click', () => {

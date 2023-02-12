@@ -191,36 +191,38 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(50px);
+
       z-index: 100;
-      overflow: hidden;
     }
 
     .contentModalBox {
-      position: absolute;
-      top: 50%;
+      position: fixed;
+      margin-top: 10vh;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       width: 80%;
       height: fit-content;
       padding: 20px;
+      overflow: hidden;
       border-radius: 15px;
       background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(50px);
-      z-index: 100;
+      z-index: 200;
     }
 
     .contentModalHeader {
-      width: 100%;
       display: flex;
       align-items: center;
-      width: 80%;
-      height: fit-content
+      width: 90%;
+      height: fit-content;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .contentModalHeader h1 {
-      width: 100%;
       font-size: 2em;
-      margin: 0;
+      white-space: nowrap;
     }
 
     .close {
@@ -233,11 +235,19 @@
     .contentModalBody {
       margin-top: 20px;
       display: grid;
+      height: 100%;
       grid-template-columns: 1fr 1fr;
+      font-size: small;
     }
 
     .contentModalBody div {
       display: grid;
+    }
+
+    .contentModalBody div:nth-child(3) {
+      height: fit-content;
+      grid-column-start: 1;
+      grid-column-end: 3;
     }
 
     .contentModalBody iframe {
@@ -249,11 +259,16 @@
       width: 100%;
       height: 100%;
       margin-top: 10px;
-      font-size: larger;
       line-height: 1.5em;
+      font-weight: bolder;
       display: flex;
       justify-content: left;
       align-items: center;
+      cursor: pointer;
+    }
+
+    span:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -418,13 +433,12 @@
       `
 
         this.addEventListener('click', () => {
-          //create modal
+
           let modal = document.createElement('div');
           modal.classList.add('contentModalContainer');
           modal.innerHTML = `
-      <div class="contentModalContainer" style="height:100vh; overflow-y:hidden;">
-        <div class="contentModalBox">
-          <div class="contentModalHeader">
+            <div class="contentModalBox">
+             <div class="contentModalHeader">
             <div class="contentModalTitle">
               <h1>${lesson}</h1>
               </div>
@@ -440,17 +454,17 @@
           <div class="contentModalBody">
             <div>
               <iframe src="./yewon/${num}.html"></iframe>
-<span style="color: #000;">No.${num} by Yewon</span>
-<p style="color: #000;">This is ${lesson}.</p>
+                <span style="color: #000;" onclick="window.location.href='./yewon/${num}.html'">Yewon No.${num}</span>
               </div>
             <div>
               <iframe src="./sejin/${num}.html"></iframe>
-              <span style="color: #000;">No.${num} by Sejin</span>
-<p style="color: #000;">This is ${lesson}.</p>
+              <span style="color: #000;" onclick="window.location.href='./sejin/${num}.html'">Sejin No.${num}</span>
               </div>
+              <div>
+                <p style="color: #000;"> This sketch is inspired by ${lesson}.</p>
+                </div>
           </div>
         </div>
-      </div>
       `
           document.body.appendChild(modal);
         })
