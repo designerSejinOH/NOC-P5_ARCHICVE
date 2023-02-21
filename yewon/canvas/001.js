@@ -1,6 +1,7 @@
 let w;
 let x,y;
 let n=1;
+let mouse1,mouse2;
 let phone=[];
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -106,5 +107,6 @@ class Walker{
     this.x+=(-1)**n*random(100,200);
     this.y+=(-1)**n*random(150,200);
     }
+
   }
 }
